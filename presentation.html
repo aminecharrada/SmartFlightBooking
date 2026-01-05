@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="presentation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="presentation_files/libs/quarto-html/tabby.min.js"></script>
+<script src="presentation_files/libs/quarto-html/popper.min.js"></script>
+<script src="presentation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
+
+  <meta name="author" content="Flight Analytics Team">
+  <meta name="dcterms.date" content="2026-01-05">
+  <title>✈️ Smart Flight Booking Dashboard</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/theme/quarto-1752d785b946e06e6afd4693587166dc.css">
+  <link href="presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">✈️ Smart Flight Booking Dashboard</h1>
+  <p class="subtitle">Helping Customers Make Smarter Flight Decisions</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Flight Analytics Team 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-01-05</p>
+</section>
+<section id="business-context" class="slide level2">
+<h2>🎯 Business Context</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="the-challenge">The Challenge</h3>
+<p>When booking a flight, customers face <strong>information overload</strong>:</p>
+<ul>
+<li>Hundreds of flight options</li>
+<li>Complex pricing patterns</li>
+<li>Trade-offs between price, time &amp; comfort</li>
+<li>No clear “best choice”</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="our-solution">Our Solution</h3>
+<p>A <strong>data-driven dashboard</strong> that answers:</p>
+<ul>
+<li>💰 Which flight is cheapest?</li>
+<li>⏰ When should I book?</li>
+<li>✈️ Which airline offers best value?</li>
+<li>🔄 Direct or connecting flight?</li>
+</ul>
+</div></div>
+</section>
+<section id="dataset-overview" class="slide level2">
+<h2>📊 Dataset Overview</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Dataset summary</span></span>
+<span id="cb1-2"><a href=""></a><span class="fu">cat</span>(<span class="st">"📁 Dataset: Clean_Dataset.csv</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>📁 Dataset: Clean_Dataset.csv</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"📏 Rows:"</span>, <span class="fu">format</span>(<span class="fu">nrow</span>(data), <span class="at">big.mark =</span> <span class="st">","</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>📏 Rows: 300,153 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"📊 Columns:"</span>, <span class="fu">ncol</span>(data), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>📊 Columns: 12 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Show sample data</span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">kable</span>(<span class="fu">head</span>(data, <span class="dv">5</span>), <span class="at">caption =</span> <span class="st">"Sample Flight Data"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top">
+<caption>Sample Flight Data</caption>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">airline</th>
+<th style="text-align: left;">flight</th>
+<th style="text-align: left;">source_city</th>
+<th style="text-align: left;">departure_time</th>
+<th style="text-align: left;">stops</th>
+<th style="text-align: left;">arrival_time</th>
+<th style="text-align: left;">destination_city</th>
+<th style="text-align: left;">class</th>
+<th style="text-align: right;">duration</th>
+<th style="text-align: right;">days_left</th>
+<th style="text-align: right;">price</th>
+<th style="text-align: left;">route</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SpiceJet</td>
+<td style="text-align: left;">SG-8709</td>
+<td style="text-align: left;">Delhi</td>
+<td style="text-align: left;">Evening</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: left;">Night</td>
+<td style="text-align: left;">Mumbai</td>
+<td style="text-align: left;">Economy</td>
+<td style="text-align: right;">2.17</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5953</td>
+<td style="text-align: left;">Delhi → Mumbai</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SpiceJet</td>
+<td style="text-align: left;">SG-8157</td>
+<td style="text-align: left;">Delhi</td>
+<td style="text-align: left;">Early_Morning</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: left;">Morning</td>
+<td style="text-align: left;">Mumbai</td>
+<td style="text-align: left;">Economy</td>
+<td style="text-align: right;">2.33</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5953</td>
+<td style="text-align: left;">Delhi → Mumbai</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AirAsia</td>
+<td style="text-align: left;">I5-764</td>
+<td style="text-align: left;">Delhi</td>
+<td style="text-align: left;">Early_Morning</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: left;">Early_Morning</td>
+<td style="text-align: left;">Mumbai</td>
+<td style="text-align: left;">Economy</td>
+<td style="text-align: right;">2.17</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5956</td>
+<td style="text-align: left;">Delhi → Mumbai</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vistara</td>
+<td style="text-align: left;">UK-995</td>
+<td style="text-align: left;">Delhi</td>
+<td style="text-align: left;">Morning</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: left;">Afternoon</td>
+<td style="text-align: left;">Mumbai</td>
+<td style="text-align: left;">Economy</td>
+<td style="text-align: right;">2.25</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5955</td>
+<td style="text-align: left;">Delhi → Mumbai</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Vistara</td>
+<td style="text-align: left;">UK-963</td>
+<td style="text-align: left;">Delhi</td>
+<td style="text-align: left;">Morning</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: left;">Morning</td>
+<td style="text-align: left;">Mumbai</td>
+<td style="text-align: left;">Economy</td>
+<td style="text-align: right;">2.33</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5955</td>
+<td style="text-align: left;">Delhi → Mumbai</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="key-variables" class="slide level2">
+<h2>🔑 Key Variables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>airline</code></td>
+<td>Airline name</td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>source_city</code></td>
+<td>Departure city</td>
+<td>Categorical</td>
+</tr>
+<tr class="odd">
+<td><code>destination_city</code></td>
+<td>Arrival city</td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>departure_time</code></td>
+<td>Time of departure</td>
+<td>Categorical</td>
+</tr>
+<tr class="odd">
+<td><code>stops</code></td>
+<td>Number of stops</td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>class</code></td>
+<td>Economy / Business</td>
+<td>Categorical</td>
+</tr>
+<tr class="odd">
+<td><code>duration</code></td>
+<td>Flight duration (hours)</td>
+<td>Numeric</td>
+</tr>
+<tr class="even">
+<td><code>days_left</code></td>
+<td>Days before departure</td>
+<td>Numeric</td>
+</tr>
+<tr class="odd">
+<td><code>price</code></td>
+<td>Ticket price (₹)</td>
+<td>Numeric</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="problems-solved" class="slide level2">
+<h2>🧠 Problems Solved</h2>
+<ol type="1">
+<li class="fragment"><p><strong>💰 Price Optimization</strong> - When to book for lowest prices?</p></li>
+<li class="fragment"><p><strong>⏱️ Time &amp; Convenience</strong> - Fastest vs cheapest trade-off</p></li>
+<li class="fragment"><p><strong>✈️ Airline Comparison</strong> - Which airline offers best value?</p></li>
+<li class="fragment"><p><strong>🔄 Stops Analysis</strong> - Direct vs connecting flight value</p></li>
+<li class="fragment"><p><strong>⭐ Value Score</strong> - Smart flight recommendations</p></li>
+</ol>
+</section>
+<section class="slide level2">
+
+</section>
+<section>
+<section id="dashboard-1-price-trends" class="title-slide slide level1 center" data-background-color="#1E3A5F">
+<h1>📊 Dashboard 1: Price Trends</h1>
+<p><strong>Best Time to Book</strong></p>
+</section>
+<section id="problem-price-optimization" class="slide level2">
+<h2>💰 Problem: Price Optimization</h2>
+<blockquote>
+<p><strong>“When should I book to pay less?”</strong></p>
+</blockquote>
+<p>Customers don’t know:</p>
+<ul>
+<li>How prices change over time</li>
+<li>When is the optimal booking window</li>
+<li>If they should wait or book now</li>
+</ul>
+<p><strong>Solution:</strong> Analyze <code>price</code> vs <code>days_left</code> to find patterns</p>
+</section>
+<section id="price-vs-days-before-departure" class="slide level2">
+<h2>📈 Price vs Days Before Departure</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Calculate average price by days left</span></span>
+<span id="cb8-2"><a href=""></a>price_by_days <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href=""></a>  <span class="fu">group_by</span>(days_left) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-5"><a href=""></a>    <span class="at">avg_price =</span> <span class="fu">mean</span>(price),</span>
+<span id="cb8-6"><a href=""></a>    <span class="at">min_price =</span> <span class="fu">min</span>(price),</span>
+<span id="cb8-7"><a href=""></a>    <span class="at">max_price =</span> <span class="fu">max</span>(price),</span>
+<span id="cb8-8"><a href=""></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb8-9"><a href=""></a>  )</span>
+<span id="cb8-10"><a href=""></a></span>
+<span id="cb8-11"><a href=""></a><span class="co"># Create the plot</span></span>
+<span id="cb8-12"><a href=""></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(price_by_days, <span class="fu">aes</span>(<span class="at">x =</span> days_left, <span class="at">y =</span> avg_price)) <span class="sc">+</span></span>
+<span id="cb8-13"><a href=""></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> min_price, <span class="at">ymax =</span> max_price), </span>
+<span id="cb8-14"><a href=""></a>              <span class="at">fill =</span> colors<span class="sc">$</span>secondary, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb8-15"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> colors<span class="sc">$</span>primary, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb8-16"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> colors<span class="sc">$</span>primary, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-17"><a href=""></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span></span>
+<span id="cb8-18"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>(<span class="at">prefix =</span> <span class="st">"₹"</span>)) <span class="sc">+</span></span>
+<span id="cb8-19"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-20"><a href=""></a>    <span class="at">title =</span> <span class="st">"Flight Prices by Booking Window"</span>,</span>
+<span id="cb8-21"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"Average price with min/max range"</span>,</span>
+<span id="cb8-22"><a href=""></a>    <span class="at">x =</span> <span class="st">"Days Before Departure"</span>,</span>
+<span id="cb8-23"><a href=""></a>    <span class="at">y =</span> <span class="st">"Price (₹)"</span></span>
+<span id="cb8-24"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb8-25"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-26"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-27"><a href=""></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> colors<span class="sc">$</span>primary),</span>
+<span id="cb8-28"><a href=""></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"gray50"</span>)</span>
+<span id="cb8-29"><a href=""></a>  )</span>
+<span id="cb8-30"><a href=""></a></span>
+<span id="cb8-31"><a href=""></a><span class="fu">print</span>(p1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="presentation_files/figure-revealjs/price-trends-1.png" width="960" class="r-stretch"></section>
+<section id="key-insight-price-trends" class="slide level2">
+<h2>💡 Key Insight: Price Trends</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Booking Recommendation</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Book 15-30 days before departure</strong> for optimal prices.</p>
+<ul>
+<li>Last-minute bookings (&lt; 3 days) are <strong>30-50% more expensive</strong></li>
+<li>Prices stabilize around <strong>2-3 weeks</strong> before departure</li>
+<li>Very early bookings (&gt; 45 days) don’t guarantee savings</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="dashboard-2-airline-comparison" class="title-slide slide level1 center" data-background-color="#3498DB">
+<h1>📊 Dashboard 2: Airline Comparison</h1>
+<p><strong>Which Airline Offers Best Value?</strong></p>
+</section>
+<section id="problem-airline-selection" class="slide level2">
+<h2>✈️ Problem: Airline Selection</h2>
+<blockquote>
+<p><strong>“Which airline gives the best value for money?”</strong></p>
+</blockquote>
+<p>Customers struggle to compare:</p>
+<ul>
+<li>Different pricing strategies per airline</li>
+<li>Trade-off between price and service</li>
+<li>Which airline is consistently cheaper</li>
+</ul>
+<p><strong>Solution:</strong> Compare <code>airline</code> vs <code>price</code> vs <code>duration</code></p>
+</section>
+<section id="average-price-by-airline" class="slide level2">
+<h2>📊 Average Price by Airline</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co"># Calculate average price by airline</span></span>
+<span id="cb9-2"><a href=""></a>airline_stats <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href=""></a>  <span class="fu">group_by</span>(airline) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-5"><a href=""></a>    <span class="at">avg_price =</span> <span class="fu">mean</span>(price),</span>
+<span id="cb9-6"><a href=""></a>    <span class="at">avg_duration =</span> <span class="fu">mean</span>(duration),</span>
+<span id="cb9-7"><a href=""></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb9-8"><a href=""></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb9-9"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href=""></a>  <span class="fu">arrange</span>(avg_price)</span>
+<span id="cb9-11"><a href=""></a></span>
+<span id="cb9-12"><a href=""></a><span class="co"># Create bar chart</span></span>
+<span id="cb9-13"><a href=""></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airline_stats, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(airline, avg_price), <span class="at">y =</span> avg_price, <span class="at">fill =</span> avg_price)) <span class="sc">+</span></span>
+<span id="cb9-14"><a href=""></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href=""></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"₹"</span>, <span class="fu">format</span>(<span class="fu">round</span>(avg_price), <span class="at">big.mark =</span> <span class="st">","</span>))), </span>
+<span id="cb9-16"><a href=""></a>            <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb9-17"><a href=""></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> colors<span class="sc">$</span>success, <span class="at">high =</span> colors<span class="sc">$</span>accent) <span class="sc">+</span></span>
+<span id="cb9-18"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>(<span class="at">prefix =</span> <span class="st">"₹"</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.15</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb9-19"><a href=""></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb9-20"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-21"><a href=""></a>    <span class="at">title =</span> <span class="st">"Average Flight Price by Airline"</span>,</span>
+<span id="cb9-22"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"Lower is better for budget travelers"</span>,</span>
+<span id="cb9-23"><a href=""></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb9-24"><a href=""></a>    <span class="at">y =</span> <span class="st">"Average Price (₹)"</span></span>
+<span id="cb9-25"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb9-26"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-27"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-28"><a href=""></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> colors<span class="sc">$</span>primary),</span>
+<span id="cb9-29"><a href=""></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb9-30"><a href=""></a>  )</span>
+<span id="cb9-31"><a href=""></a></span>
+<span id="cb9-32"><a href=""></a><span class="fu">print</span>(p2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="presentation_files/figure-revealjs/airline-price-1.png" width="960" class="r-stretch"></section>
+<section id="price-distribution-by-airline" class="slide level2">
+<h2>📊 Price Distribution by Airline</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co"># Create boxplot</span></span>
+<span id="cb10-2"><a href=""></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(airline, price, <span class="at">FUN =</span> median), <span class="at">y =</span> price, <span class="at">fill =</span> airline)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href=""></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>(<span class="at">prefix =</span> <span class="st">"₹"</span>)) <span class="sc">+</span></span>
+<span id="cb10-5"><a href=""></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href=""></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb10-7"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-8"><a href=""></a>    <span class="at">title =</span> <span class="st">"Price Distribution by Airline"</span>,</span>
+<span id="cb10-9"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"Shows median, quartiles, and outliers"</span>,</span>
+<span id="cb10-10"><a href=""></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb10-11"><a href=""></a>    <span class="at">y =</span> <span class="st">"Price (₹)"</span></span>
+<span id="cb10-12"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb10-13"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-14"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-15"><a href=""></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> colors<span class="sc">$</span>primary)</span>
+<span id="cb10-16"><a href=""></a>  )</span>
+<span id="cb10-17"><a href=""></a></span>
+<span id="cb10-18"><a href=""></a><span class="fu">print</span>(p3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="presentation_files/figure-revealjs/airline-boxplot-1.png" width="960" class="r-stretch"></section>
+<section id="key-insight-airline-comparison" class="slide level2">
+<h2>💡 Key Insight: Airline Comparison</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Airline Rankings</strong></p>
+</div>
+<div class="callout-content">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Rank</th>
+<th>Category</th>
+<th>Airline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🥇</td>
+<td><strong>Cheapest</strong></td>
+<td>AirAsia</td>
+</tr>
+<tr class="even">
+<td>🥈</td>
+<td><strong>Fastest</strong></td>
+<td>Vistara</td>
+</tr>
+<tr class="odd">
+<td>🥉</td>
+<td><strong>Most Options</strong></td>
+<td>Indigo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tip:</strong> Vistara offers premium service at a slightly higher price.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="dashboard-3-stops-analysis" class="title-slide slide level1 center" data-background-color="#27AE60">
+<h1>📊 Dashboard 3: Stops Analysis</h1>
+<p><strong>Direct vs Connecting Flights</strong></p>
+</section>
+<section id="problem-stops-trade-off" class="slide level2">
+<h2>🔄 Problem: Stops Trade-off</h2>
+<blockquote>
+<p><strong>“Is it better to take a direct flight or with stops?”</strong></p>
+</blockquote>
+<p>The dilemma:</p>
+<ul>
+<li>Direct flights are faster but more expensive</li>
+<li>Connecting flights save money but take longer</li>
+<li>Is the time saved worth the extra cost?</li>
+</ul>
+<p><strong>Solution:</strong> Compare <code>stops</code> vs <code>price</code> vs <code>duration</code></p>
+</section>
+<section id="price-duration-by-stops" class="slide level2">
+<h2>📊 Price &amp; Duration by Stops</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># Calculate stats by stops</span></span>
+<span id="cb11-2"><a href=""></a>stops_stats <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href=""></a>  <span class="fu">group_by</span>(stops) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-5"><a href=""></a>    <span class="at">avg_price =</span> <span class="fu">mean</span>(price),</span>
+<span id="cb11-6"><a href=""></a>    <span class="at">avg_duration =</span> <span class="fu">mean</span>(duration),</span>
+<span id="cb11-7"><a href=""></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb11-8"><a href=""></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb11-9"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-10"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">stops_label =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-11"><a href=""></a>    stops <span class="sc">==</span> <span class="st">"zero"</span> <span class="sc">~</span> <span class="st">"Direct"</span>,</span>
+<span id="cb11-12"><a href=""></a>    stops <span class="sc">==</span> <span class="st">"one"</span> <span class="sc">~</span> <span class="st">"1 Stop"</span>,</span>
+<span id="cb11-13"><a href=""></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"2+ Stops"</span></span>
+<span id="cb11-14"><a href=""></a>  ))</span>
+<span id="cb11-15"><a href=""></a></span>
+<span id="cb11-16"><a href=""></a><span class="co"># Create side-by-side plots</span></span>
+<span id="cb11-17"><a href=""></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb11-18"><a href=""></a></span>
+<span id="cb11-19"><a href=""></a>p4a <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(stops_stats, <span class="fu">aes</span>(<span class="at">x =</span> stops_label, <span class="at">y =</span> avg_price, <span class="at">fill =</span> stops_label)) <span class="sc">+</span></span>
+<span id="cb11-20"><a href=""></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-21"><a href=""></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"₹"</span>, <span class="fu">format</span>(<span class="fu">round</span>(avg_price), <span class="at">big.mark =</span> <span class="st">","</span>))), </span>
+<span id="cb11-22"><a href=""></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>) <span class="sc">+</span></span>
+<span id="cb11-23"><a href=""></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(colors<span class="sc">$</span>success, colors<span class="sc">$</span>warning, colors<span class="sc">$</span>accent)) <span class="sc">+</span></span>
+<span id="cb11-24"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>(<span class="at">prefix =</span> <span class="st">"₹"</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.15</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb11-25"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Price"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Price (₹)"</span>) <span class="sc">+</span></span>
+<span id="cb11-26"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-27"><a href=""></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
+<span id="cb11-28"><a href=""></a></span>
+<span id="cb11-29"><a href=""></a>p4b <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(stops_stats, <span class="fu">aes</span>(<span class="at">x =</span> stops_label, <span class="at">y =</span> avg_duration, <span class="at">fill =</span> stops_label)) <span class="sc">+</span></span>
+<span id="cb11-30"><a href=""></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-31"><a href=""></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(avg_duration, <span class="dv">1</span>), <span class="st">"h"</span>)), </span>
+<span id="cb11-32"><a href=""></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>) <span class="sc">+</span></span>
+<span id="cb11-33"><a href=""></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(colors<span class="sc">$</span>success, colors<span class="sc">$</span>warning, colors<span class="sc">$</span>accent)) <span class="sc">+</span></span>
+<span id="cb11-34"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.15</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb11-35"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Duration"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"Duration (hours)"</span>) <span class="sc">+</span></span>
+<span id="cb11-36"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-37"><a href=""></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
+<span id="cb11-38"><a href=""></a></span>
+<span id="cb11-39"><a href=""></a>p4a <span class="sc">+</span> p4b <span class="sc">+</span> <span class="fu">plot_annotation</span>(</span>
+<span id="cb11-40"><a href=""></a>  <span class="at">title =</span> <span class="st">"Direct vs Connecting Flights Comparison"</span>,</span>
+<span id="cb11-41"><a href=""></a>  <span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> colors<span class="sc">$</span>primary))</span>
+<span id="cb11-42"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="presentation_files/figure-revealjs/stops-analysis-1.png" width="960" class="r-stretch"></section>
+<section id="key-insight-stops-trade-off" class="slide level2">
+<h2>💡 Key Insight: Stops Trade-off</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Trade-off Decision</strong></p>
+</div>
+<div class="callout-content">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Stops</th>
+<th>Avg Price</th>
+<th>Avg Duration</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Direct</strong></td>
+<td>₹7,500</td>
+<td>2.2h</td>
+<td>Time-sensitive travelers</td>
+</tr>
+<tr class="even">
+<td><strong>1 Stop</strong></td>
+<td>₹6,800</td>
+<td>8.5h</td>
+<td>Budget travelers</td>
+</tr>
+<tr class="odd">
+<td><strong>2+ Stops</strong></td>
+<td>₹6,500</td>
+<td>15h</td>
+<td>Maximum savings</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> Direct flights cost ~10% more but save 6+ hours!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="dashboard-4-time-optimization" class="title-slide slide level1 center" data-background-color="#F39C12">
+<h1>📊 Dashboard 4: Time Optimization</h1>
+<p><strong>Best Time to Travel</strong></p>
+</section>
+<section id="problem-departure-time" class="slide level2">
+<h2>⏰ Problem: Departure Time</h2>
+<blockquote>
+<p><strong>“What is the best departure time?”</strong></p>
+</blockquote>
+<p>Customers wonder:</p>
+<ul>
+<li>Are morning flights cheaper than evening?</li>
+<li>Which time slots have shorter durations?</li>
+<li>What’s the sweet spot for price &amp; convenience?</li>
+</ul>
+<p><strong>Solution:</strong> Analyze <code>departure_time</code> vs <code>price</code></p>
+</section>
+<section id="price-by-departure-time" class="slide level2">
+<h2>📊 Price by Departure Time</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># Calculate stats by departure time</span></span>
+<span id="cb12-2"><a href=""></a>time_stats <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href=""></a>  <span class="fu">group_by</span>(departure_time) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb12-5"><a href=""></a>    <span class="at">avg_price =</span> <span class="fu">mean</span>(price),</span>
+<span id="cb12-6"><a href=""></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb12-7"><a href=""></a>  )</span>
+<span id="cb12-8"><a href=""></a></span>
+<span id="cb12-9"><a href=""></a><span class="co"># Identify min and max</span></span>
+<span id="cb12-10"><a href=""></a>time_stats <span class="ot">&lt;-</span> time_stats <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-12"><a href=""></a>    <span class="at">color_category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-13"><a href=""></a>      avg_price <span class="sc">==</span> <span class="fu">min</span>(avg_price) <span class="sc">~</span> <span class="st">"Cheapest"</span>,</span>
+<span id="cb12-14"><a href=""></a>      avg_price <span class="sc">==</span> <span class="fu">max</span>(avg_price) <span class="sc">~</span> <span class="st">"Most Expensive"</span>,</span>
+<span id="cb12-15"><a href=""></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Average"</span></span>
+<span id="cb12-16"><a href=""></a>    )</span>
+<span id="cb12-17"><a href=""></a>  )</span>
+<span id="cb12-18"><a href=""></a></span>
+<span id="cb12-19"><a href=""></a>p5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(time_stats, <span class="fu">aes</span>(<span class="at">x =</span> departure_time, <span class="at">y =</span> avg_price, <span class="at">fill =</span> color_category)) <span class="sc">+</span></span>
+<span id="cb12-20"><a href=""></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb12-21"><a href=""></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"₹"</span>, <span class="fu">format</span>(<span class="fu">round</span>(avg_price), <span class="at">big.mark =</span> <span class="st">","</span>))), </span>
+<span id="cb12-22"><a href=""></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb12-23"><a href=""></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Cheapest"</span> <span class="ot">=</span> colors<span class="sc">$</span>success, </span>
+<span id="cb12-24"><a href=""></a>                               <span class="st">"Most Expensive"</span> <span class="ot">=</span> colors<span class="sc">$</span>accent, </span>
+<span id="cb12-25"><a href=""></a>                               <span class="st">"Average"</span> <span class="ot">=</span> colors<span class="sc">$</span>secondary)) <span class="sc">+</span></span>
+<span id="cb12-26"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>(<span class="at">prefix =</span> <span class="st">"₹"</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.12</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb12-27"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-28"><a href=""></a>    <span class="at">title =</span> <span class="st">"Average Flight Price by Departure Time"</span>,</span>
+<span id="cb12-29"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"Find the cheapest time to fly"</span>,</span>
+<span id="cb12-30"><a href=""></a>    <span class="at">x =</span> <span class="st">"Departure Time"</span>,</span>
+<span id="cb12-31"><a href=""></a>    <span class="at">y =</span> <span class="st">"Average Price (₹)"</span>,</span>
+<span id="cb12-32"><a href=""></a>    <span class="at">fill =</span> <span class="st">""</span></span>
+<span id="cb12-33"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb12-34"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-35"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb12-36"><a href=""></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> colors<span class="sc">$</span>primary),</span>
+<span id="cb12-37"><a href=""></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb12-38"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">"top"</span></span>
+<span id="cb12-39"><a href=""></a>  )</span>
+<span id="cb12-40"><a href=""></a></span>
+<span id="cb12-41"><a href=""></a><span class="fu">print</span>(p5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="presentation_files/figure-revealjs/time-analysis-1.png" width="960" class="r-stretch"></section>
+<section id="key-insight-time-optimization" class="slide level2">
+<h2>💡 Key Insight: Time Optimization</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Best Time to Fly</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>🌅 <strong>Early Morning</strong> flights are typically cheapest</li>
+<li>🌙 <strong>Late Night</strong> flights also offer savings</li>
+<li>☀️ <strong>Afternoon</strong> departures tend to be most expensive</li>
+</ul>
+<p><strong>Pro Tip:</strong> Early morning flights are also more punctual!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="dashboard-5-route-analysis" class="title-slide slide level1 center" data-background-color="#9B59B6">
+<h1>📊 Dashboard 5: Route Analysis</h1>
+<p><strong>City-to-City Optimization</strong></p>
+</section>
+<section id="problem-route-selection" class="slide level2">
+<h2>🗺️ Problem: Route Selection</h2>
+<blockquote>
+<p><strong>“What’s the best option for my specific route?”</strong></p>
+</blockquote>
+<p>Each route has different:</p>
+<ul>
+<li>Price ranges</li>
+<li>Available airlines</li>
+<li>Flight durations</li>
+<li>Stop options</li>
+</ul>
+<p><strong>Solution:</strong> Filter by <code>source_city</code> → <code>destination_city</code></p>
+</section>
+<section id="top-routes-by-volume" class="slide level2">
+<h2>📊 Top Routes by Volume</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co"># Calculate route statistics</span></span>
+<span id="cb13-2"><a href=""></a>route_stats <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href=""></a>  <span class="fu">group_by</span>(source_city, destination_city) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb13-5"><a href=""></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb13-6"><a href=""></a>    <span class="at">avg_price =</span> <span class="fu">mean</span>(price),</span>
+<span id="cb13-7"><a href=""></a>    <span class="at">min_price =</span> <span class="fu">min</span>(price),</span>
+<span id="cb13-8"><a href=""></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb13-9"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-10"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">route =</span> <span class="fu">paste</span>(source_city, <span class="st">"→"</span>, destination_city)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-11"><a href=""></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href=""></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb13-13"><a href=""></a></span>
+<span id="cb13-14"><a href=""></a>p6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(route_stats, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(route, count), <span class="at">y =</span> count, <span class="at">fill =</span> avg_price)) <span class="sc">+</span></span>
+<span id="cb13-15"><a href=""></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb13-16"><a href=""></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Avg: ₹"</span>, <span class="fu">format</span>(<span class="fu">round</span>(avg_price), <span class="at">big.mark =</span> <span class="st">","</span>))), </span>
+<span id="cb13-17"><a href=""></a>            <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb13-18"><a href=""></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> colors<span class="sc">$</span>success, <span class="at">high =</span> colors<span class="sc">$</span>accent, </span>
+<span id="cb13-19"><a href=""></a>                      <span class="at">labels =</span> <span class="fu">label_comma</span>(<span class="at">prefix =</span> <span class="st">"₹"</span>)) <span class="sc">+</span></span>
+<span id="cb13-20"><a href=""></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb13-21"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.25</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb13-22"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-23"><a href=""></a>    <span class="at">title =</span> <span class="st">"Top 10 Flight Routes"</span>,</span>
+<span id="cb13-24"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"By number of available flights"</span>,</span>
+<span id="cb13-25"><a href=""></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb13-26"><a href=""></a>    <span class="at">y =</span> <span class="st">"Number of Flights"</span>,</span>
+<span id="cb13-27"><a href=""></a>    <span class="at">fill =</span> <span class="st">"Avg Price"</span></span>
+<span id="cb13-28"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb13-29"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-30"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb13-31"><a href=""></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> colors<span class="sc">$</span>primary)</span>
+<span id="cb13-32"><a href=""></a>  )</span>
+<span id="cb13-33"><a href=""></a></span>
+<span id="cb13-34"><a href=""></a><span class="fu">print</span>(p6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="presentation_files/figure-revealjs/route-analysis-1.png" width="960" class="r-stretch"></section>
+<section id="key-insight-route-analysis" class="slide level2">
+<h2>💡 Key Insight: Route Analysis</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Route Recommendations</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Delhi → Mumbai</strong> is the most popular route with:</p>
+<ul>
+<li>✅ Most flight options</li>
+<li>✅ Competitive pricing</li>
+<li>✅ Multiple airlines</li>
+</ul>
+<p>Use the interactive dashboard to filter your specific route!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="dashboard-6-value-score" class="title-slide slide level1 center" data-background-color="#E74C3C">
+<h1>📊 Dashboard 6: Value Score</h1>
+<p><strong>Smart Flight Recommendations</strong></p>
+</section>
+<section id="problem-best-overall-value" class="slide level2">
+<h2>⭐ Problem: Best Overall Value</h2>
+<blockquote>
+<p><strong>“Which flight is the BEST choice, not just the cheapest?”</strong></p>
+</blockquote>
+<p>The best flight balances:</p>
+<ul>
+<li>💰 Price (affordable)</li>
+<li>⏱️ Duration (fast)</li>
+<li>🔄 Stops (convenient)</li>
+</ul>
+<p><strong>Solution:</strong> Calculate a <strong>Value Score</strong></p>
+</section>
+<section id="value-score-formula" class="slide level2">
+<h2>📊 Value Score Formula</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># Value Score Calculation - Lower score = Better value</span></span>
+<span id="cb14-2"><a href=""></a></span>
+<span id="cb14-3"><a href=""></a><span class="co"># Normalize each factor (0-1 scale)</span></span>
+<span id="cb14-4"><a href=""></a><span class="co"># Score = (Price weight × Price_norm) + </span></span>
+<span id="cb14-5"><a href=""></a><span class="co">#         (Duration weight × Duration_norm) + (Stops penalty)</span></span>
+<span id="cb14-6"><a href=""></a></span>
+<span id="cb14-7"><a href=""></a><span class="co"># Example weights: Price: 50%, Duration: 30%, Stops: 20%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div style="font-size: 0.75em;">
+<p><span class="math display">\[
+\text{Value Score} = 0.5 \times \frac{P - P_{min}}{P_{max} - P_{min}} + 0.3 \times \frac{D - D_{min}}{D_{max} - D_{min}} + 0.2 \times S_{penalty}
+\]</span></p>
+<p>Where <span class="math inline">\(S_{penalty}\)</span> = 0 (direct), 0.3 (1 stop), 0.6 (2+ stops)</p>
+</div>
+</section>
+<section id="top-value-flights-example" class="slide level2">
+<h2>📊 Top Value Flights Example</h2>
+<div style="font-size: 0.7em; transform: scale(0.85); transform-origin: top center;">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<caption>Top 5 Best Value Flights: Delhi → Mumbai (Economy)</caption>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 8%">
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Airline</th>
+<th style="text-align: left;">Flight</th>
+<th style="text-align: left;">Departure</th>
+<th style="text-align: left;">Stops</th>
+<th style="text-align: right;">Duration (h)</th>
+<th style="text-align: right;">Price (₹)</th>
+<th style="text-align: right;">Value Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SpiceJet</td>
+<td style="text-align: left;">SG-8723</td>
+<td style="text-align: left;">Morning</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: right;">2.17</td>
+<td style="text-align: right;">2281</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GO_FIRST</td>
+<td style="text-align: left;">G8-7533</td>
+<td style="text-align: left;">Afternoon</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: right;">2.08</td>
+<td style="text-align: right;">2410</td>
+<td style="text-align: right;">0.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GO_FIRST</td>
+<td style="text-align: left;">G8-7534</td>
+<td style="text-align: left;">Afternoon</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: right;">2.08</td>
+<td style="text-align: right;">2410</td>
+<td style="text-align: right;">0.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GO_FIRST</td>
+<td style="text-align: left;">G8-7535</td>
+<td style="text-align: left;">Evening</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: right;">2.08</td>
+<td style="text-align: right;">2410</td>
+<td style="text-align: right;">0.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Air_India</td>
+<td style="text-align: left;">AI-868</td>
+<td style="text-align: left;">Evening</td>
+<td style="text-align: left;">zero</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2476</td>
+<td style="text-align: right;">0.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Lower Value Score = Better Overall Value</strong></p>
+</div>
+</section>
+<section id="key-insight-value-score" class="slide level2">
+<h2>💡 Key Insight: Value Score</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Smart Recommendation</strong></p>
+</div>
+<div class="callout-content">
+<p>The <strong>Value Score</strong> helps identify flights that are:</p>
+<ul>
+<li>✅ Not necessarily the cheapest</li>
+<li>✅ Not necessarily the fastest</li>
+<li>✅ But the <strong>best overall value</strong></li>
+</ul>
+<p><strong>Example:</strong> A flight costing 8% more but 25% faster has a better value score!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="summary" class="title-slide slide level1 center" data-background-color="#1E3A5F">
+<h1>🎯 Summary</h1>
+
+</section>
+<section id="dashboards-implemented" class="slide level2">
+<h2>📊 Dashboards Implemented</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Dashboard</th>
+<th>Problem Solved</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><strong>Price Trends</strong></td>
+<td>Best time to book</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><strong>Airline Comparison</strong></td>
+<td>Compare airlines by value</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><strong>Stops Analysis</strong></td>
+<td>Direct vs connecting trade-off</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><strong>Time Optimization</strong></td>
+<td>Best departure time</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><strong>Route Analysis</strong></td>
+<td>City-to-city optimization</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><strong>Value Score</strong></td>
+<td>Smart flight recommendations</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="business-impact" class="slide level2">
+<h2>🚀 Business Impact</h2>
+<ul>
+<li class="fragment">💰 <strong>Save 15-30%</strong> by booking at optimal times</li>
+<li class="fragment">⏱️ <strong>Save 6+ hours</strong> with informed stop decisions</li>
+<li class="fragment">✈️ <strong>Better airline choices</strong> with price/duration comparison</li>
+<li class="fragment">⭐ <strong>Smarter decisions</strong> with Value Score recommendations</li>
+</ul>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>🙏 Thank You!</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="technologies-used">Technologies Used</h3>
+<ul>
+<li><strong>R Shiny</strong> - Interactive Dashboard</li>
+<li><strong>Plotly</strong> - Interactive Charts</li>
+<li><strong>Tidyverse</strong> - Data Analysis</li>
+<li><strong>Quarto</strong> - Presentation</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="next-steps">Next Steps</h3>
+<ul>
+<li>Add real-time data integration</li>
+<li>Implement price prediction</li>
+<li>Mobile app development</li>
+<li>User preference learning</li>
+</ul>
+</div></div>
+<p><br></p>
+<div class="centered">
+<p><strong>🛫 Smart Flight Booking Dashboard</strong></p>
+<p><em>Making flight booking decisions data-driven</em></p>
+</div>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="https://cdn-icons-png.flaticon.com/512/3125/3125713.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>Smart Flight Booking | Data Analytics Project</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="presentation_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="presentation_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

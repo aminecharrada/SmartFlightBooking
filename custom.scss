@@ -1,0 +1,159 @@
+/*-- scss:defaults --*/
+
+$primary: #1E3A5F;
+$secondary: #3498DB;
+$success: #27AE60;
+$warning: #F39C12;
+$danger: #E74C3C;
+$info: #9B59B6;
+
+$body-bg: #ffffff;
+$body-color: #2C3E50;
+$link-color: $secondary;
+
+$presentation-heading-color: $primary;
+$presentation-heading-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+/*-- scss:rules --*/
+
+.reveal .slide-background {
+  background-size: cover;
+}
+
+.reveal h1, .reveal h2 {
+  color: $primary;
+  font-weight: 700;
+}
+
+.reveal h3 {
+  color: $secondary;
+}
+
+.reveal .slides section {
+  text-align: left;
+}
+
+.reveal .slides section.centered {
+  text-align: center;
+}
+
+/* Callout styling */
+.callout {
+  border-radius: 10px;
+  margin: 1em 0;
+}
+
+.callout-tip {
+  border-left-color: $success !important;
+}
+
+.callout-note {
+  border-left-color: $secondary !important;
+}
+
+.callout-warning {
+  border-left-color: $warning !important;
+}
+
+.callout-important {
+  border-left-color: $danger !important;
+}
+
+/* Table styling */
+.reveal table {
+  font-size: 0.8em;
+  border-collapse: collapse;
+  margin: 1em auto;
+}
+
+.reveal table th {
+  background-color: $primary;
+  color: white;
+  padding: 10px 15px;
+}
+
+.reveal table td {
+  padding: 8px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.reveal table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Code styling */
+.reveal pre {
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.reveal code {
+  font-size: 0.85em;
+}
+
+/* List styling */
+.reveal ul li {
+  margin-bottom: 0.5em;
+}
+
+.reveal .incremental li {
+  opacity: 0.3;
+}
+
+.reveal .incremental li.visible {
+  opacity: 1;
+}
+
+/* Custom classes */
+.centered {
+  text-align: center;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 1em 0;
+}
+
+/* KPI cards */
+.kpi-card {
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  margin: 10px;
+}
+
+.kpi-value {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.kpi-label {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+/* Emoji sizing */
+.reveal h1 .emoji, .reveal h2 .emoji {
+  font-size: 0.9em;
+}
+
+/* Footer styling */
+.reveal .footer {
+  font-size: 0.6em;
+  color: #666;
+}
+
+/* Column layouts */
+.columns {
+  display: flex;
+  gap: 2em;
+}
+
+.column {
+  flex: 1;
+}
