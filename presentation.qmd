@@ -477,11 +477,21 @@ print(p5)
 ::: {.callout-tip}
 ## Best Time to Fly
 
-- 🌅 **Early Morning** flights are typically cheapest
-- 🌙 **Late Night** flights also offer savings
-- ☀️ **Afternoon** departures tend to be most expensive
+```{r time-insight}
+#| echo: false
 
-**Pro Tip:** Early morning flights are also more punctual!
+cheapest <- time_stats %>% filter(avg_price == min(avg_price))
+most_exp <- time_stats %>% filter(avg_price == max(avg_price))
+
+cat(sprintf("- 🌙 **%s** flights are CHEAPEST at ₹%s\n", 
+            cheapest$departure_time, format(round(cheapest$avg_price), big.mark = ",")))
+cat(sprintf("- 🌃 **%s** flights are MOST EXPENSIVE at ₹%s\n", 
+            most_exp$departure_time, format(round(most_exp$avg_price), big.mark = ",")))
+cat(sprintf("- 💰 Save up to ₹%s by choosing the right time!\n", 
+            format(round(most_exp$avg_price - cheapest$avg_price), big.mark = ",")))
+```
+
+**Pro Tip:** Early morning flights are often more punctual!
 :::
 
 ---
