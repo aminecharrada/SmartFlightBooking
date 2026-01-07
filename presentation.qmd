@@ -394,7 +394,7 @@ stops_stats %>%
   )
 ```
 
-**Recommendation:** Direct flights cost more but save significant time!
+**Recommendation:** Direct flights are both CHEAPER and FASTER - best value overall!
 :::
 
 ---
