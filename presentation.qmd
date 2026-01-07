@@ -90,6 +90,39 @@ A **data-driven dashboard** that answers:
 
 ---
 
+## 📊 Dataset Overview
+
+```{r dataset-overview}
+#| echo: true
+#| code-fold: true
+
+# Dataset summary
+cat("📁 Dataset: Clean_Dataset.csv\n")
+cat("📏 Rows:", format(nrow(data), big.mark = ","), "\n")
+cat("📊 Columns:", ncol(data), "\n\n")
+
+# Show sample data
+kable(head(data, 5), caption = "Sample Flight Data")
+```
+
+---
+
+## 🔑 Key Variables
+
+| Variable | Description | Type |
+|----------|-------------|------|
+| `airline` | Airline name | Categorical |
+| `source_city` | Departure city | Categorical |
+| `destination_city` | Arrival city | Categorical |
+| `departure_time` | Time of departure | Categorical |
+| `stops` | Number of stops | Categorical |
+| `class` | Economy / Business | Categorical |
+| `duration` | Flight duration (hours) | Numeric |
+| `days_left` | Days before departure | Numeric |
+| `price` | Ticket price (₹) | Numeric |
+
+---
+
 ## 🧠 Problems Solved
 
 ::: {.incremental}
