@@ -374,13 +374,27 @@ p4a + p4b + plot_annotation(
 ::: {.callout-warning}
 ## The Trade-off Decision
 
-| Stops | Avg Price | Avg Duration | Best For |
-|-------|-----------|--------------|----------|
-| **Direct** | ₹7,500 | 2.2h | Time-sensitive travelers |
-| **1 Stop** | ₹6,800 | 8.5h | Budget travelers |
-| **2+ Stops** | ₹6,500 | 15h | Maximum savings |
+```{r stops-table}
+#| echo: false
 
-**Recommendation:** Direct flights cost ~10% more but save 6+ hours!
+stops_stats %>%
+  mutate(
+    avg_price_formatted = paste0("₹", format(round(avg_price), big.mark = ",")),
+    avg_duration_formatted = paste0(round(avg_duration, 1), "h"),
+    best_for = case_when(
+      stops == "zero" ~ "Time-sensitive travelers",
+      stops == "one" ~ "Balanced choice",
+      TRUE ~ "Maximum savings"
+    )
+  ) %>%
+  select(stops_label, avg_price_formatted, avg_duration_formatted, best_for) %>%
+  kable(
+    col.names = c("Stops", "Avg Price", "Avg Duration", "Best For"),
+    align = c("l", "r", "r", "l")
+  )
+```
+
+**Recommendation:** Direct flights cost more but save significant time!
 :::
 
 ---
