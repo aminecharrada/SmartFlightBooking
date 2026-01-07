@@ -42,7 +42,7 @@ info = "#9B59B6"
 )
 
 # Load the dataset
-data <- read.csv("../Clean_Dataset.csv", stringsAsFactors = FALSE)
+data <- read.csv("Clean_Dataset.csv", stringsAsFactors = FALSE)
 
 # Data preprocessing
 data <- data %>%
